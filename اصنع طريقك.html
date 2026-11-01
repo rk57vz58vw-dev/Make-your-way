@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>اصنع طريقك</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--tx:#101828;--mu:#667085;--ac:#4f46e5;--ac2:#eef0ff;--ac3:#7c3aed;--bd:#e4e7ec;--bad:#b42318;--ok:#067647;--okbg:#e7f6ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0d1117;--card:#161b22;--tx:#f0f3f6;--mu:#8b97a5;--ac:#818cf8;--ac2:#1e2140;--ac3:#a78bfa;--bd:#2a313b;--bad:#f97066;--ok:#47cd89;--okbg:#12281d}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0d1117;--card:#161b22;--tx:#f0f3f6;--mu:#8b97a5;--ac:#818cf8;--ac2:#1e2140;--ac3:#a78bfa;--bd:#2a313b;--bad:#f97066;--ok:#47cd89;--okbg:#12281d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Tajawal',system-ui,sans-serif;line-height:1.7}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px 60px}
+.top{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--bd)}
+.top .in{max-width:820px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem}
+.logo svg{width:34px;height:34px}
+.user{display:flex;align-items:center;gap:8px;font-size:.92rem}
+.av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--ac),var(--ac3));color:#fff;display:grid;place-items:center;font-weight:700}
+.badge{font-size:.75rem;background:var(--ac2);color:var(--ac);padding:2px 10px;border-radius:99px;font-weight:500}
+.hero{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:24px;background:linear-gradient(160deg,#312e81,#4f46e5 55%,#7c3aed);color:#fff;text-align:center}
+.hero .box{max-width:420px;width:100%;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);border-radius:22px;padding:34px 26px}
+.hero svg{width:64px;height:64px;margin-bottom:6px}
+.hero h1{margin:0 0 6px;font-size:2rem;font-weight:800}
+.hero p{margin:0 0 22px;opacity:.9}
+.hero .b{background:#fff;color:#3730a3;border:0;width:100%;padding:12px;font-size:1.05rem}
+.hero small{display:block;margin-top:16px;opacity:.75}
+h2{font-size:1.1rem;margin:0 0 6px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;text-align:center}
+.stat b{display:block;font-size:1.6rem;color:var(--ac)}.stat span{font-size:.82rem;color:var(--mu)}
+nav{display:flex;gap:6px;background:var(--card);border:1px solid var(--bd);padding:5px;border-radius:12px;margin-bottom:16px;overflow-x:auto}
+nav button{flex:1;white-space:nowrap;border:0;background:none;color:var(--mu);font:inherit;font-weight:500;padding:8px 12px;border-radius:8px;cursor:pointer}
+nav button.on{background:var(--ac);color:#fff}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:12px}
+.mu{color:var(--mu);font-size:.92rem}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.sp{justify-content:space-between}
+button.b,a.b{display:inline-block;border:1px solid var(--ac);background:var(--ac);color:#fff;font:inherit;font-weight:500;padding:7px 16px;border-radius:9px;cursor:pointer;text-decoration:none}
+button.b.o,a.b.o{background:none;color:var(--ac)}
+button.b.d{background:none;border-color:var(--bad);color:var(--bad)}
+input,textarea,select{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:9px;padding:8px 10px;margin:4px 0 10px}
+label{font-size:.9rem;font-weight:500}
+.q{border:1px dashed var(--bd);border-radius:12px;padding:12px;margin-bottom:12px}
+.opt{display:flex;gap:8px;align-items:center;padding:7px 10px;border:1px solid var(--bd);border-radius:9px;margin:5px 0;cursor:pointer}
+.opt input{width:auto;margin:0}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.no{border-color:var(--bad)}
+.empty{text-align:center;color:var(--mu);padding:34px 10px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td,th{text-align:start;padding:8px 6px;border-bottom:1px solid var(--bd)}
+.scroll{overflow-x:auto}
+.score{font-size:2.2rem;font-weight:800;color:var(--ac)}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const LOGO='<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="13" fill="url(#g)"/><path d="M12 35c6 0 6-10 12-10s6-10 12-10" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><circle cx="36" cy="15" r="3.5" fill="#fff"/><defs><linearGradient id="g" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs></svg>';
+const S={stage:'boot',tab:'home',lec:[],exm:[],res:[],mine:{},teacher:false,db:null,uid:null,name:'',form:null,draft:null,taking:null,result:null,loaded:false};
+const $=s=>document.querySelector(s);
+const esc=t=>String(t==null?'':t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const blankQ=()=>({q:'',o:['','','',''],c:0});
+
+async function init(){
+  render();
+  try{
+    const user=await claude.use('user');
+    S.db=await claude.use('db');
+    if(user&&S.db){
+      S.uid=await user.id();
+      S.teacher=!!(await user.canEdit());
+      try{const s=await S.db.doc('results/'+S.uid).get();S.mine=s.data()||{};S.name=S.mine.name||''}catch(e){}
+    }
+  }catch(e){}
+  S.stage=(S.uid&&S.db)?'login':'locked';
+  render();
+}
+
+function startApp(){
+  S.stage='app';
+  const t=setTimeout(()=>{S.loaded=true;render()},10000);
+  const sub=(name,fn)=>S.db.collection(name).onSnapshot(sn=>{clearTimeout(t);S.loaded=true;fn(sn.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.ts||0)-(b.ts||0)));if(!S.form&&!S.taking)render()},()=>{S.loaded=true;render()});
+  sub('lectures',x=>S.lec=x);sub('exams',x=>S.exm=x);
+  S.db.doc('results/'+S.uid).onSnapshot(s=>{S.mine=s.data()||{};if(!S.form&&!S.taking)render()},()=>{});
+  if(S.teacher)sub('results',x=>S.res=x);
+  render();
+}
+
+function render(){
+  const r=$('#root');
+  if(S.stage==='boot'){r.innerHTML=hero('جارٍ التحقق…','',false);return}
+  if(S.stage==='locked'){r.innerHTML=hero('تسجيل الدخول مطلوب','سجّل الدخول بحسابك أولًا ثم أعد فتح الرابط للوصول إلى المنصة.',false,'<button class="b" data-act="reload">إعادة المحاولة</button>');return}
+  if(S.stage==='login'){r.innerHTML=hero('اصنع طريقك','مرحبًا '+(S.name||'بك')+'، منصتك للمحاضرات والامتحانات.',true,'<input id="dn" maxlength="40" placeholder="اكتب اسمك الذي سيظهر" value="'+esc(S.name)+'"><button class="b" data-act="enter">دخول المنصة</button><small>تم التحقق من هويتك عبر حسابك</small>');return}
+  const tabs=[['home','الرئيسية'],['lec','المحاضرات'],['exam','الامتحانات'],['mine','نتائجي']];
+  if(S.teacher)tabs.push(['res','نتائج الطلاب']);
+  r.innerHTML=`<div class="top"><div class="in"><div class="logo">${LOGO}<span>اصنع طريقك</span></div><div class="user"><span class="badge">${S.teacher?'مدرّس':'طالب'}</span><span class="av">${esc((S.name||'؟').trim().charAt(0))}</span></div></div></div>
+  <div class="wrap"><div style="height:16px"></div><nav>${tabs.map(([k,l])=>`<button data-act="tab" data-v="${k}" class="${S.tab===k?'on':''}">${l}</button>`).join('')}</nav>
+  ${({home:viewHome,lec:viewLec,exam:viewExam,mine:viewMine,res:viewRes})[S.tab]()}</div>`;
+}
+function hero(h,p,logo,extra){return `<div class="hero"><div class="box">${LOGO}<h1>${esc(h)}</h1><p>${esc(p)}</p>${extra||''}</div></div>`}
+
+function viewHome(){
+  const n=Object.keys(S.mine).filter(k=>k.startsWith('e_')).length;
+  return `<div class="card"><h2>أهلًا ${esc(S.name||'بك')} 👋</h2><span class="mu">${S.teacher?'أضف المحاضرات والامتحانات وتابع نتائج الطلاب.':'تابع محاضراتك وأدِّ امتحاناتك من هنا.'}</span></div>
+  <div class="stats"><div class="stat"><b>${S.lec.length}</b><span>محاضرة</span></div><div class="stat"><b>${S.exm.length}</b><span>امتحان</span></div><div class="stat"><b>${n}</b><span>امتحان منجز</span></div></div>`;
+}
+
+function viewLec(){
+  if(S.form==='lec')return `<div class="card"><h2>محاضرة جديدة</h2>
+  <label>العنوان</label><input id="lt" maxlength="120"><label>الوصف / الشرح</label><textarea id="ld" rows="4" maxlength="3000"></textarea>
+  <label>رابط الفيديو أو الملف (اختياري، https فقط)</label><input id="lu" dir="ltr" maxlength="500" placeholder="https://">
+  <div class="row"><button class="b" data-act="saveLec">حفظ</button><button class="b o" data-act="cancel">إلغاء</button></div></div>`;
+  let h=S.teacher?`<div class="row" style="margin-bottom:12px"><button class="b" data-act="newLec">＋ إضافة محاضرة</button></div>`:'';
+  if(!S.loaded)return h+'<div class="empty">جارٍ التحميل…</div>';
+  if(!S.lec.length)return h+`<div class="empty">لا توجد محاضرات بعد.</div>`;
+  return h+S.lec.map((l,i)=>`<div class="card"><div class="row sp"><h2>${i+1}. ${esc(l.title)}</h2>${S.teacher?`<button class="b d" data-act="delLec" data-id="${esc(l.id)}">حذف</button>`:''}</div>
+  <div style="white-space:pre-wrap">${esc(l.desc)}</div>
+  ${/^https:\/\//.test(l.url||'')?`<p><a class="b o" target="_blank" rel="noopener noreferrer" href="${esc(l.url)}">فتح المحاضرة ↗</a></p>`:''}</div>`).join('');
+}
+
+function viewExam(){
+  if(S.form==='exam'){
+    const d=S.draft;
+    return `<div class="card"><h2>امتحان جديد</h2><label>عنوان الامتحان</label><input data-k="title" maxlength="120" value="${esc(d.title)}">
+    ${d.qs.map((q,i)=>`<div class="q"><div class="row sp"><b>سؤال ${i+1}</b>${d.qs.length>1?`<button class="b d" data-act="rmQ" data-i="${i}">حذف</button>`:''}</div>
+    <input data-i="${i}" data-f="q" maxlength="300" placeholder="نص السؤال" value="${esc(q.q)}">
+    ${q.o.map((o,j)=>`<input data-i="${i}" data-f="o${j}" maxlength="200" placeholder="الخيار ${j+1}" value="${esc(o)}">`).join('')}
+    <label>الإجابة الصحيحة</label><select data-i="${i}" data-f="c">${q.o.map((_,j)=>`<option value="${j}" ${q.c===j?'selected':''}>الخيار ${j+1}</option>`).join('')}</select></div>`).join('')}
+    <div class="row"><button class="b o" data-act="addQ">＋ سؤال</button><button class="b" data-act="saveExam">حفظ الامتحان</button><button class="b o" data-act="cancel">إلغاء</button></div></div>`;
+  }
+  if(S.taking){
+    const e=S.exm.find(x=>x.id===S.taking);if(!e){S.taking=null;return viewExam()}
+    const r=S.result;
+    if(r)return `<div class="card"><h2>${esc(e.title)}</h2><div class="score">${r.score} / ${r.total}</div>
+    <p class="mu">${r.saved?'تم حفظ نتيجتك ✓':'لم يتم حفظ النتيجة (لا تملك صلاحية الحفظ)'}</p>
+    ${e.qs.map((q,i)=>`<div class="q"><b>${i+1}. ${esc(q.q)}</b>${q.o.map((o,j)=>`<div class="opt ${j===q.c?'ok':(r.ans[i]===j?'no':'')}">${esc(o)}${j===q.c?' ✓':''}</div>`).join('')}</div>`).join('')}
+    <button class="b" data-act="cancel">رجوع</button></div>`;
+    return `<div class="card"><h2>${esc(e.title)}</h2>
+    ${e.qs.map((q,i)=>`<div class="q"><b>${i+1}. ${esc(q.q)}</b>${q.o.map((o,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}">${esc(o)}</label>`).join('')}</div>`).join('')}
+    <div class="row"><button class="b" data-act="submit">تسليم</button><button class="b o" data-act="cancel">إلغاء</button></div></div>`;
+  }
+  let h=S.teacher?`<div class="row" style="margin-bottom:12px"><button class="b" data-act="newExam">＋ إضافة امتحان</button></div>`:'';
+  if(!S.loaded)return h+'<div class="empty">جارٍ التحميل…</div>';
+  if(!S.exm.length)return h+`<div class="empty">لا توجد امتحانات بعد.</div>`;
+  return h+S.exm.map(e=>{const m=S.mine['e_'+e.id];return `<div class="card row sp"><div><h2>${esc(e.title)}</h2><span class="mu">${e.qs.length} سؤال${m?` · آخر درجة: ${m.score}/${m.total}`:''}</span></div>
+  <div class="row"><button class="b" data-act="take" data-id="${esc(e.id)}">${m?'إعادة':'ابدأ'}</button>${S.teacher?`<button class="b d" data-act="delExam" data-id="${esc(e.id)}">حذف</button>`:''}</div></div>`}).join('');
+}
+
+function viewMine(){
+  const rows=Object.keys(S.mine).filter(k=>k.startsWith('e_')).map(k=>S.mine[k]).sort((a,b)=>(b.ts||0)-(a.ts||0));
+  if(!rows.length)return '<div class="empty">لم تؤدِّ أي امتحان بعد.</div>';
+  return `<div class="card scroll"><table><tr><th>الامتحان</th><th>الدرجة</th></tr>${rows.map(r=>`<tr><td>${esc(r.exam)}</td><td>${r.score}/${r.total}</td></tr>`).join('')}</table></div>`;
+}
+function viewRes(){
+  const rows=[];
+  S.res.forEach(r=>Object.keys(r).forEach(k=>{if(k.startsWith('e_')&&r[k])rows.push(r[k])}));
+  if(!rows.length)return '<div class="empty">لا توجد نتائج بعد.</div>';
+  rows.sort((a,b)=>(b.ts||0)-(a.ts||0));
+  return `<div class="card scroll"><table><tr><th>الطالب</th><th>الامتحان</th><th>الدرجة</th></tr>${rows.map(r=>`<tr><td>${esc(r.name)}</td><td>${esc(r.exam)}</td><td>${r.score}/${r.total}</td></tr>`).join('')}</table></div>`;
+}
+
+document.addEventListener('input',e=>{
+  const t=e.target,d=S.draft;if(!d)return;
+  if(t.dataset.k==='title')d.title=t.value;
+  else if(t.dataset.f){const q=d.qs[+t.dataset.i],f=t.dataset.f;
+    if(f==='q')q.q=t.value;else if(f==='c')q.c=+t.value;else q.o[+f[1]]=t.value}
+});
+
+document.addEventListener('click',async e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;
+  const a=b.dataset.act,id=b.dataset.id;
+  try{
+    if(a==='reload')return location.reload();
+    if(a==='enter'){const n=$('#dn').value.trim();if(!n)return alert('اكتب اسمك أولًا');S.name=n;try{await S.db.doc('results/'+S.uid).set(Object.assign({},S.mine,{name:n}))}catch(_){}return startApp()}
+    if(a==='tab'){S.tab=b.dataset.v;S.form=null;S.taking=null;S.result=null}
+    else if(a==='cancel'){S.form=null;S.draft=null;S.taking=null;S.result=null}
+    else if(a==='newLec')S.form='lec';
+    else if(a==='newExam'){S.form='exam';S.draft={title:'',qs:[blankQ()]}}
+    else if(a==='addQ')S.draft.qs.push(blankQ());
+    else if(a==='rmQ')S.draft.qs.splice(+b.dataset.i,1);
+    else if(a==='saveLec'){
+      if(!S.teacher)return;
+      const title=$('#lt').value.trim();if(!title)return alert('اكتب عنوان المحاضرة');
+      const url=$('#lu').value.trim();if(url&&!/^https:\/\//.test(url))return alert('الرابط يجب أن يبدأ بـ https://');
+      await S.db.collection('lectures').add({title,desc:$('#ld').value,url,ts:Date.now()});S.form=null;
+    }else if(a==='saveExam'){
+      if(!S.teacher)return;
+      const d=S.draft;
+      if(!d.title.trim())return alert('اكتب عنوان الامتحان');
+      const qs=d.qs.filter(q=>q.q.trim()&&q.o.filter(o=>o.trim()).length>=2);
+      if(!qs.length)return alert('أضف سؤالًا واحدًا على الأقل بخيارين أو أكثر');
+      qs.forEach(q=>{if(!q.o[q.c].trim())q.c=q.o.findIndex(o=>o.trim())});
+      await S.db.collection('exams').add({title:d.title.trim(),qs:qs.map(q=>({q:q.q.trim(),o:q.o.map(o=>o.trim()),c:q.c})),ts:Date.now()});S.form=null;S.draft=null;
+    }else if(a==='delLec'){if(confirm('حذف المحاضرة؟'))await S.db.doc('lectures/'+id).delete()}
+    else if(a==='delExam'){if(confirm('حذف الامتحان؟'))await S.db.doc('exams/'+id).delete()}
+    else if(a==='take'){S.taking=id;S.result=null}
+    else if(a==='submit'){
+      const ex=S.exm.find(x=>x.id===S.taking);
+      const ans=ex.qs.map((_,i)=>{const r=document.querySelector(`input[name=q${i}]:checked`);return r?+r.value:-1});
+      if(ans.includes(-1)&&!confirm('بعض الأسئلة بلا إجابة. تسليم؟'))return;
+      const score=ans.filter((v,i)=>v===ex.qs[i].c).length;
+      let saved=false;
+      try{
+        const cur=Object.assign({},S.mine);
+        cur['e_'+ex.id]={name:S.name||'طالب',exam:ex.title,score,total:ex.qs.length,ts:Date.now()};
+        await S.db.doc('results/'+S.uid).set(cur);saved=true;
+      }catch(_){}
+      S.result={score,total:ex.qs.length,ans,saved};
+    }
+  }catch(err){alert('تعذّر تنفيذ العملية. تأكد من صلاحياتك.')}
+  render();
+});
+init();
+</script>
+</body>
+</html>
